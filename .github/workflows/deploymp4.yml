@@ -11,5 +11,14 @@ jobs:
   build_push_airflow_image:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+    - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install ffmpeg
+        run: sudo apt-get install ffmpeg
+
+      - name: Install gsutil
+        run: sudo apt-get install gsutil
+
+    - name: Run bash script with arguments
+        run: bash deploy.sh
