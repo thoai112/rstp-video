@@ -1,0 +1,28 @@
+name: Record RTSP stream to Google Drive
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  record-rtsp-stream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install ffmpeg
+        run: sudo apt-get install ffmpeg
+
+      - name: Install gsutil
+        run: sudo apt-get install gsutil
+
+      - name: Set variables
+        env:
+          URL: 'rtsp://user:password@10.0.0.167:554/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif'
+          FILE=$(date "+%y%m%d-%H%M%S")-imou1.mp4
+
+      - name: Record video
+        run: ffmpeg -i "$URL" -c:v copy -c:a copy -f mp4 -b:v 20M -vf scale=1280:720 "$FILE"
+
+      - name: Upload video to Google Drive
+        run: gsutil cp "$FILE" gdrive:/my-folder/
