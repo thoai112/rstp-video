@@ -12,13 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-        uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
-      - name: Install ffmpeg
-        run: sudo apt-get install ffmpeg
+    - name: Install ffmpeg
+      run: sudo apt-get install ffmpeg
 
-      - name: Install gsutil
-        run: sudo apt-get install gsutil
+    - name: Install gsutil
+      run: sudo apt-get install gsutil
 
     - name: Run bash script with arguments
-        run: bash deploy.sh
+      run: bash deploy.sh
