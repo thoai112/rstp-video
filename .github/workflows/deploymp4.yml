@@ -18,7 +18,7 @@ jobs:
 
       - name: Set variables
         env:
-          URL: 'rtsp://user:password@10.0.0.167:554/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif'
+          URL: 'rtsp://admin:Kurata1909@21.209.162.229:2500/onvif1'
           FILE=$(date "+%y%m%d-%H%M%S")-imou1.mp4
 
       - name: Record video
