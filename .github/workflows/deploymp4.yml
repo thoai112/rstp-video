@@ -2,6 +2,9 @@ name: Record RTSP stream to Google Drive
 on:
   schedule:
     - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
 
 jobs:
   record-rtsp-stream:
@@ -16,13 +19,5 @@ jobs:
       - name: Install gsutil
         run: sudo apt-get install gsutil
 
-      - name: Set variables
-        env:
-          URL: 'rtsp://admin:Kurata1909@21.209.162.229:2500/onvif1'
-          FILE=$(date "+%y%m%d-%H%M%S")-imou1.mp4
-
-      - name: Record video
-        run: ffmpeg -i "$URL" -c:v copy -c:a copy -f mp4 -b:v 20M -vf scale=1280:720 "$FILE"
-
-      - name: Upload video to Google Drive
-        run: gsutil cp "$FILE" gdrive:/my-folder/
+    - name: Run bash script with arguments
+        run: bash deploy.sh
