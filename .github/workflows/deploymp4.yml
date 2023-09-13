@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  record-rtsp-stream:
+  run-bash:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
