@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install ffmpeg
-      run: sudo apt-get install ffmpeg
+      uses: actions/checkout@v3
+      
+    - name: Checkout ff
+      uses: FedericoCarboni/setup-ffmpeg@v2
 
     - name: Install gsutil
       run: sudo apt-get install gsutil
