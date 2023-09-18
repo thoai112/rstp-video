@@ -1,5 +1,8 @@
 name: Build and Push Airflow Image
 
+env:
+  RUNNER_ALLOW_RUNASROOT: 1
+
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -18,7 +21,7 @@ jobs:
       uses: FedericoCarboni/setup-ffmpeg@v2
 
     - name: Run bash script with arguments
-      run: ffmpeg -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 $RUNNER_TEMP/output.avi
+      run: sudo ffmpeg -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 $RUNNER_TEMP/output.avi
 
     - name: Cat file
       run: ls -l $RUNNER_TEMP/
