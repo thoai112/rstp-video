@@ -21,7 +21,7 @@ jobs:
       uses: FedericoCarboni/setup-ffmpeg@v2
 
     - name: Run bash script with arguments
-      run: sudo ffmpeg -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 $RUNNER_TEMP/output.avi
+      run: ffmpeg -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 $RUNNER_TEMP/output.avi
 
     - name: Cat file
       run: ls -l $RUNNER_TEMP/
