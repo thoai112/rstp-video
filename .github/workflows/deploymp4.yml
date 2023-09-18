@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Checkout ff
-      uses: FedericoCarboni/setup-ffmpeg@latest
+      uses: FedericoCarboni/setup-ffmpeg@v2
 
     - name: Run bash script with arguments
       run: ffmpeg -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 $RUNNER_TEMP/output.avi
