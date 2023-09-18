@@ -17,6 +17,8 @@ jobs:
     - name: Checkout ff
       uses: FedericoCarboni/setup-ffmpeg@v2
 
-
     - name: Run bash script with arguments
-      run: ffmpeg -nostdin -hide_banner -re -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 -t 20 -c:v libx264 -vf scale=1280:720 output.avi
+      run: ffmpeg -nostdin -hide_banner -re -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 -t 20 -c:v libx264 -vf scale=1280:720 $RUNNER_TEMP/output.avi
+
+    - name: Cat file
+      run: ls $RUNNER_TEMP/
