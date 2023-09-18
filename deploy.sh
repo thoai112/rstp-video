@@ -11,4 +11,5 @@ TIMEOUT=$(( TIME+5 ))
 
 FILE=$(date "+%y%m%d-%H%M%S")-imou1.mkv
 
-timeout $TIMEOUT ffmpeg -i "$URL" -c:v libx264 -vf scale=1280:720 $FILE
+
+ffmpeg -i "$URL" -c:v libx264 -vf scale=1280:720 $FILE
