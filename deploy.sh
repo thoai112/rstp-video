@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-URL='rtsp://admin:Kurata1909@21.209.162.229:2500/onvif1'
+URL='rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2'
 
 PREFIX=/media/ggdrive/Camera/$(date "+%y%m%d")
-TMP=/tmp/Camera/
+
 
 TIME=310 # seconds
 TIMEOUT=$(( TIME+5 ))
 
-mkdir -p $PREFIX $TMP
 
-FILE=$TMP/$(date "+%y%m%d-%H%M%S")-imou1.mkv
+FILE=$(date "+%y%m%d-%H%M%S")-imou1.mkv
 
-timeout $TIMEOUT ffmpeg -nostdin -hide_banner -re -i "$URL" -t $TIME -rtsp_transport tcp -c:v copy -c:a copy $FILE
-mv $FILE $PREFIX/
+timeout $TIMEOUT ffmpeg -i "$URL" -t $TIME -c:v libx264 -vf scale=1280:720 $FILE
