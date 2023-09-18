@@ -17,8 +17,6 @@ jobs:
     - name: Checkout ff
       uses: FedericoCarboni/setup-ffmpeg@v2
 
-    - name: Install gsutil
-      run: sudo apt-get install gsutil
 
     - name: Run bash script with arguments
       run: bash deploy.sh
