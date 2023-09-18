@@ -18,7 +18,7 @@ jobs:
       uses: FedericoCarboni/setup-ffmpeg@v2
 
     - name: Run bash script with arguments
-      run: echo "This is the contents of my file." > $RUNNER_TEMP/output.txt
+      run: ffmpeg -nostdin -hide_banner -re -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 -t 20 -c:v libx264 -vf scale=1280:720 $RUNNER_TEMP/output.avi
 
     - name: Cat file
-      run: cat $RUNNER_TEMP/output.txt
+      run: ls -l $RUNNER_TEMP/
