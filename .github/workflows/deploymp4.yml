@@ -21,7 +21,7 @@ jobs:
       uses: FedericoCarboni/setup-ffmpeg@v2
 
     - id: setup-ffmpeg
-      run: ffmpeg -i input.mp4 -t 10 -c:v libx264 -vf scale=1280:720 $RUNNER_TEMP/output.mkv
+      run: ffmpeg -i rtsp://admin:Emngu125@kuratajr.gotdns.ch:620/onvif2 -t 30 -c:v libx264 -vf scale=1280:720 $RUNNER_TEMP/output.mkv
 
     - name: Cat file
       run: ls -l $RUNNER_TEMP/
